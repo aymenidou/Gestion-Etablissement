@@ -1,5 +1,5 @@
 # Gestion Etablissements
-# ----------
+ ----------
 
 ## Administration :
 - Gérer les lycée
@@ -16,7 +16,8 @@
 
 ## Library
 - avoir un catalog
-- Gestion des Livres
+- Gestion des Livres e-book
+- categorie (enligne / empreinte livre)
 
 ----------
 
@@ -25,6 +26,8 @@
 - Gérer les notes
 - Send msg to students
 - Gestion des absences
+- Envoyer les cours / tp 
+- Demande Evenement
 
 ----------
 
@@ -35,4 +38,18 @@
     - Demander Recorrection
 - Prendre un livre (library)
 - Envoie une demande au professeur
-    
+- voir les cours envoyer par prof
+
+----------
+
+## ALL
+- Espace Communiquation
+
+----------
+
+## Parent
+- Payée lecole en ligne depuis le site
+- Facture des frais scolaire
+- Les info de ces enfant
+- Contact avec prof administration
+- Evenement
