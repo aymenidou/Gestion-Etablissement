@@ -3,14 +3,14 @@
 
 ## Administration :
 - Gérer les lycée
-- Gérer les étudiant
-- Gérer les professeur
-- Gérer les employer (Directeur / Secraitaire / Menage / ....)
-- Gérer les événement
-- Imprimer les resultat
-- Gestion des emploi de temps
-- Gestion des Matiere
-- Gestion d'une library
+- Gérer les étudiant add del update archive %Scolarite
+- Gérer les professeur %Scolarite
+- Gérer les employer (Directeur / Secraitaire / Menage / ....) %RH
+- Gérer les événement %library
+- Imprimer les resultat %Scolarite
+- Gestion des emploi de temps %Scolarite
+- Gestion des Matiere %Scolarite
+- Gestion d'une library 
 
 ----------
 
