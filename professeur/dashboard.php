@@ -10,9 +10,11 @@ if (isset($_SESSION['cne'])) {
   $stmt->bindValue(1, $cne);
   $stmt->execute();
   $row = $stmt->fetchAll();
-  $nom =    $_SESSION['nom'] = $row[0]['nom'];
+  $nom = $_SESSION['nom'] = $row[0]['nom'];
   $prenom = $_SESSION['prenom'] = $row[0]['prenom'];
+  $image_profil = $_SESSION['avatar'] = $row[0]['avatar'];
 }
+$pageHeader = "Accueil";
 if (isset($_GET["display"])) {
   switch ($_GET["display"]) {
     case 'email':
@@ -94,13 +96,13 @@ if (isset($_GET["display"])) {
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
+          <i class="fas fa-fw fa-user"></i>
           <span>Mon profile</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-            <a class="collapse-item" href="dashboard.php?display=parametres">Paramètres</a>
+            <a class="collapse-item" href="dashboard.php?display=parametres"><i class="fas fa-fw fa-cog"></i> Paramètres</a>
             <!-- <a class="collapse-item" href="cards.html">Cards</a> -->
           </div>
         </div>
@@ -336,7 +338,7 @@ if (isset($_GET["display"])) {
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                   <?php print($nom . "<br>" . $prenom) ?>
                 </span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <img class="img-profile rounded-circle" src="<?php echo $image_profil;?>" >
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -375,20 +377,27 @@ if (isset($_GET["display"])) {
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><?php echo $pageHeader; ?></h1>
+            <h1 class="h3 mb-0 text-gray-800"><?php echo $pageHeader ?></h1>
             <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
           </div>
 
 
           <div class="card shadow mb-4">
             <?php
-            switch ($_GET['display']) {
-              case 'email':
-                include 'email.php';
-                break;
-              case 'parametres':
-                include 'parametres.php';
-                break;
+            if (isset($_GET['display'])) {
+
+              switch ($_GET['display']) {
+                case 'email':
+                  include 'email.php';
+                  break;
+                case 'parametres':
+                  include 'parametres.php';
+                  break;
+              }
+            }else{
+              echo "<script>
+              window.location.href = '?display=parametres'
+            </script>";
             }
 
             ?>
@@ -454,7 +463,6 @@ if (isset($_GET["display"])) {
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
-
 
 
 </body>

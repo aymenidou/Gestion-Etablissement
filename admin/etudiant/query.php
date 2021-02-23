@@ -9,9 +9,16 @@ $date_inscription = $_POST['date_inscription'];
 $groupe = $_POST['groupe'];  
 $niveau = $_POST['niveau'];  
 include_once '../../config.php';
+if ($_POST['genre'] == "m") {
+	$avatar = "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light";
+}
+if ($_POST['genre'] == "f") {
+	$avatar = "https://avataaars.io/?avatarStyle=Circle";
+}
+
  //INSERT 
  $query = " INSERT INTO etudiants (cne, nom, prenom, genre, date_naissance, adresse,date_inscription, groupe,niveau_scolaire,avatar ) 
-  VALUES ( '$cne','$nom', '$prenom', '$genre', '$date_naissance', '$adresse','$date_inscription', '$groupe','$niveau','' ) "; 
+  VALUES ( '$cne','$nom', '$prenom', '$genre', '$date_naissance', '$adresse','$date_inscription', '$groupe','$niveau','$avatar' ) "; 
 	$username = " insert into authentification (username,password,type,cne) values ('" . $cne . "@school.ma','$cne','etudiant','$cne')";
 echo $query .'<br>';
 // echo $username;

@@ -25,7 +25,7 @@ if ($username && $password) {
                 break;
             case "professeur":
                 $_SESSION['type'] = "professeur";
-                echo "<script>window.location.href='professeur/dashboard.php'</script>";
+                echo "<script>window.location.href='professeur/dashboard.php?display=email'</script>";
                 break;
             case "etudiant":
                 $_SESSION['type'] = "etudiant";
