@@ -98,7 +98,7 @@ $rows = $stmt->fetchAll();
                     }
                     echo "<th>" . $rows[$i]['date_embauche'] . "</th>
                         <th>" . $rows[$i]['telephone'] . "</th>
-                        <th> <a href='delete.php?id=" . $rows[$i]['id'] . "'><i class='text-danger fa fa-trash' aria-hidden='true'></i></a></th>
+                        <th> <a href='../delete.php?id_pro=" . $rows[$i]['id'] . "'><i class='text-danger fa fa-trash' aria-hidden='true'></i></a></th>
                     </tr> ";
                 }
                 ?>

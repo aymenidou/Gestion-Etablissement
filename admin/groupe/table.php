@@ -70,7 +70,8 @@ $rows = $stmt->fetchAll();
                         <th> <a href='administration.php?display=Etudiants&groupe=" . $rows[$i]['id'] . "'> " . $rows[$i]['groupe'] . " </a></th>
                         <th>" . $rows[$i]['filiere'] . "</th>
                         <th>" . $rows[$i]['salle'] . "</th>
-                        <th style='text-align:center'> <a href='delete.php?id=" . $rows[$i]['id'] . "'><i class='text-danger fa fa-trash' aria-hidden='true'></i></a></th></tr>";
+                        <th style='text-align:center'> <a href='../delete.php?id_g=" . $rows[$i]['id'] . "'><i class='text-danger fa fa-trash' aria-hidden='true'></i></a></th>
+                        </tr>";
                
                 }
                 ?>

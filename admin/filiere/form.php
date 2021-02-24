@@ -1,42 +1,27 @@
-<link rel="stylesheet" href="../form_styles.css">
 
-<h2>Filiere</h2>
-<form id="form1" name="form1" method="post" action="query.php">
-    <label for="nom">Filiere</label><input type="text" name="nom" id="nom" />
-    <br class="clear" />
-    <label for="description">Description</label><input type="text" name="description" id="description" />
-    <br class="clear" />
-    <input type="submit" name="ajouter" id="ajouter" value="Ajouter" />
-    <input type="reset" name="annuler" id="annuler" value="Annuler" />
-    <br class="clear" />
-</form>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
 
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter une Filiere</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
 
-<?php
-include '../connexion.php';
-$sql = "select * from filiere";
-$stmt = $bdd->query($sql);
-$rows = $stmt->fetchAll();
-?>
-<div>
-    <h2>liste des filiere</h2>
-    <table border>
-        <tr>
-            <th>id</th>
-            <th>Filiere</th>
-            <th>Description</th>
-        </tr>
-        <?php
-        if ($rows) {
-            // var_dump($rows);
-            for ($i = 0; $i < count($rows); $i++) {
-                echo "<tr>";
-                echo "<td>" . $rows[$i][0] . "</td>";
-                echo "<td>" . $rows[$i][1] . "</td>";
-                echo "<td>" . $rows[$i][2] . "</td>";
-                echo "</tr>";
-            }
-        }
-        ?>
-    </table>
+            <form id="form1" name="form1" method="post" action="filiere/query.php">
+                <input type="text" name="nom" id="nom" class="form-control form-control-user mb-2" placeholder="Filiere" />
+                <input type="text" name="description" id="description" class="form-control form-control-user mb-2" placeholder="Description" />
+
+        </div>
+        <div class="modal-footer">
+            <div class="btn-block align-content-center ">
+                <button type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn  btn-primary col-sm-6 mb-3 mb-sm-0">Ajouter</button>
+                <button type="reset" name="annuler" id="annuler" value="Annuler" class="btn  btn-secondary col-sm-5 mb-3  mb-sm-0">Annuler</button>
+            </div>
+        </div>
+        </form>
+
+    </div>
 </div>

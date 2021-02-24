@@ -1,10 +1,10 @@
 <?php //Query 
 $filiere = $_POST['filiere'];  
 $matiere = $_POST['matiere'];  
-
+$coef=$_POST['coef'];
  //INSERT 
- $query = " INSERT INTO coeficient ( filiere, matiere )  VALUES ( '$filiere', '$matiere' ) "; 
- $result = mysql_query($query); 
+ $query = " INSERT INTO coeficient ( filiere, matiere, coef )  VALUES ( '$filiere', '$matiere','$coef' ) "; 
+ $result = $bdd->query($query); 
 
  if( $result )
  {

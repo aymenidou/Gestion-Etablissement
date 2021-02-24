@@ -22,7 +22,13 @@ $rows = $stmt->fetchAll();
     <a href="#" data-toggle="modal" data-target="#addForm">
         <button class="btn btn-primary btn-icon-split align-self-end ">
             <span class="icon "><i class="fa fa-plus" aria-hidden="true"></i></span>
-            <span class="text">Ajouter</span>
+            <span class="text">Ajouter Filiere</span>
+        </button>
+    </a>
+    <a href="#" data-toggle="modal" data-target="#addFormM">
+        <button class="btn btn-primary btn-icon-split align-self-end ">
+            <span class="icon "><i class="fa fa-plus" aria-hidden="true"></i></span>
+            <span class="text">Ajouter Matiere</span>
         </button>
     </a>
     <button class="btn btn-danger btn-icon-split align-self-end">
@@ -60,8 +66,8 @@ $rows = $stmt->fetchAll();
                         <th>" . $rows[$i]['id'] . "</th>
                         <th>" . $rows[$i]['nom'] . "</th>
                         <th>" . $rows[$i]['description'] . "</th>
-                        <th><i class='fa text-success fa-pen' aria-hidden='true'></i></th>
-                        <th><i class='fa text-danger fa-trash' aria-hidden='true'></i></th>
+                        <th><a href='?id_f=" . $rows[$i]['id'] . "' data-toggle='modal' data-target='#addFormC'><i class='fa text-success fa-pen' aria-hidden='true'></i></a></th>
+                        <th><a href='../delete.php?id_f=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-trash' aria-hidden='true'></i></a></th>
                         </tr>";
                 }
                 ?>
@@ -71,6 +77,12 @@ $rows = $stmt->fetchAll();
 </div>
 <div class="modal fade" id="addForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <?php include 'filiere/form.php'; ?>
+</div>
+<div class="modal fade" id="addFormM" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <?php include 'matiere/form.php'; ?>
+</div>
+<div class="modal fade" id="addFormC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <?php include 'coeficient/form.php'; ?>
 </div>
 
 <!-- Bootstrap core JavaScript-->

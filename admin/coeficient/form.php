@@ -1,5 +1,25 @@
-<link rel="stylesheet" href="../form_styles.css">
-<h2>Coeficient</h2>
+<?php  
+$sqlf="select * from filiere";
+$sqlm="select * from matiere";
+$sqlc="select c.id ,f.nom , m.nom from coeficient c inner join filiere f inner join matiere m where c.filiere = f.id and c.matiere = m.id";
+$stmt = $bdd->query($sqlf);
+$stmt = $bdd->query($sqlf);
+$stmt = $bdd->query($sqlf);
+
+?>
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter un Coeficient</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
 <form id="form1" name="form1" method="post" action="query.php">
 	<label for="filiere">Niveau</label><select name="filiere" id="filiere">
 		<option value="">2Bac</option>
@@ -30,9 +50,14 @@
 			<td><a href="#" >Supprimer</a></td>
 		</tr>
 	</table>
-	<input type="submit" name="ajouter" id="ajouter" value="Ajouter" />
-<input type="reset" name="annuler" id="annuler" value="Annuler" />
-<br class="clear" /> 
+	</div>
+	<div class="modal-footer">
+            <div class="btn-block align-content-center ">
+                <button type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn  btn-primary col-sm-6 mb-3 mb-sm-0">Ajouter</button>
+                <button type="reset" name="annuler" id="annuler" value="Annuler" class="btn  btn-secondary col-sm-5 mb-3  mb-sm-0">Annuler</button>
+            </div>
+        </div>
+
 </form>
 <script>
 const btn = document.querySelector("#add");
@@ -45,32 +70,5 @@ table.innerHTML += "<tr><td>Math</td><td><input type='number' name='coeficient_1
 })
 </script>
 
-<?php
-include '../connexion.php';
-    $sql = "select * from filiere";
-    $stmt = $bdd->query($sql);
-    $rows = $stmt->fetchAll();
-    ?>
-    <div>
-        <h2>liste des filiere</h2>
-        <table border>
-            <tr>
-                <th>id</th>
-                <th>Filiere</th>
-                <th>Matiere</th>
-                <th>Coeficient</th>
-            </tr>
-            <?php
-            if ($rows) {
-                // var_dump($rows);
-                for ($i = 0; $i < count($rows); $i++) {
-                    echo "<tr>";
-                    echo "<td>" . $rows[$i][0] . "</td>";
-                    echo "<td>" . $rows[$i][1] . "</td>";
-                    echo "<td>" . $rows[$i][2] . "</td>";
-                    echo "</tr>";
-                }
-            }
-            ?>
-        </table>
-    </div>
+
+    

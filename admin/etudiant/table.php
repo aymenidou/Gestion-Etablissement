@@ -26,11 +26,10 @@ INNER JOIN groupe g
  WHERE
 n.id = e.niveau_scolaire 
 AND g.id = e.groupe";
-if(isset($_GET['groupe'])){
+if (isset($_GET['groupe'])) {
     $idgroupe = $_GET['groupe'];
     // echo "idgroupe ". $idgroupe;
-    $sql =$sql ." AND e.groupe = ".$idgroupe."";
-    
+    $sql = $sql . " AND e.groupe = " . $idgroupe . "";
 }
 $stmt = $bdd->prepare($sql);
 $stmt->execute();
@@ -67,13 +66,12 @@ $rows = $stmt->fetchAll();
                     <th>Adresse</th>
                     <th>Niveau</th>
                     <th>Groupe</th>
-                    <th ></th>
-                    <th ></th>
+                    <th></th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
-                <th>ID</th>
+                    <th>ID</th>
                     <th>CNE</th>
                     <th>Nom</th>
                     <th>Prenom</th>
@@ -83,8 +81,7 @@ $rows = $stmt->fetchAll();
                     <th>Adresse</th>
                     <th>Niveau</th>
                     <th>Groupe</th>
-                    <th ></th>
-                    <th ></th>
+                    <th></th>
 
                 </tr>
             </tfoot>
@@ -103,10 +100,8 @@ $rows = $stmt->fetchAll();
                         <th>" . $rows[$i]['adresse'] . "</th>
                         <th>" . $rows[$i]['niveau'] . "</th>
                         <th>" . $rows[$i]['groupe'] . "</th>
-                        <th><i class='fa text-success fa-pen' aria-hidden='true'></i></th>
-                        <th><i class='fa text-danger fa-trash' aria-hidden='true'></i></th>
+                        <th><a href='../delete.php?id_e=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-trash' aria-hidden='true'></i></a></th>
                         </tr>";
-               
                 }
                 ?>
             </tbody>

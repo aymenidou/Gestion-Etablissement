@@ -18,7 +18,7 @@ if ($username && $password) {
 
         $_SESSION['cne'] = $row['cne'];
         $_SESSION['username'] = $row['username'];
-        // echo '<br>CNE ' . $_SESSION['cne'];
+        
         switch ($row["type"]) {
             case "admin":
                 echo "<script>window.location.href='admin/choices.php'</script>";
@@ -35,8 +35,9 @@ if ($username && $password) {
                 header('location:dashboard.php', false);
         };
     }
-    // header('location:login.html');
+     else {
+        header('location:login.html?error=1');
+        echo "<script>window.location.href='index.php?error=1'</script>";
+                
+    }
 }
-//  else {
-//     header('location:login.html?error=1');
-// }

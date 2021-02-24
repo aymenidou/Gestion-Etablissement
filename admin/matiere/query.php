@@ -1,14 +1,16 @@
 <?php //Query 
-include 'params.php';
-include '../connexion.php';
+$matiere = $_POST['nom'];  
+$description = $_POST['description'];  
+include '../../config.php';
  //INSERT 
- $query = " INSERT INTO matiere ( matiere, description )  VALUES ( '$matiere', '$description' ) "; 
+ $query = " INSERT INTO matiere ( nom, description )  VALUES ( '$matiere', '$description' ) "; 
  $result = $bdd->query($query); 
 
  if( $result )
  {
 	 echo 'Success';
-	 header('location:form.php');
+	 echo "<script>window.location.href='../administration.php?display=Filiere'</script>";
+
  }
  else
  {

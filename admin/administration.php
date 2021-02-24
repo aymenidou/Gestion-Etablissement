@@ -13,7 +13,9 @@ if (isset($_SESSION['cne'])) {
   $stmt->execute();
   $row = $stmt->fetchAll();
   $nom = $_SESSION['nom'];
-  $prenom = $_SESSION['prenom']; // optimiser les requete des info user
+  $prenom = $_SESSION['prenom'];
+  $avatar = $_SESSION['avatar'];
+  // optimiser les requete des info user
   // var_dump($row);
 } else {
   echo "<script>window.location.href='../index.php'</script>";
@@ -293,7 +295,7 @@ if (isset($_GET['display'])) {
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $nom . "<br>" . $prenom ?></span>
-                <img class="img-profile rounded-circle" src="https://avataaars.io">
+                <img class="img-profile rounded-circle" src="<?php echo $avatar;?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

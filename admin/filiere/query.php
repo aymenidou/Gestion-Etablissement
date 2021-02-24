@@ -1,18 +1,14 @@
 <?php //Query 
-include 'params.php';
-include '../connexion.php';
- //INSERT 
- $query = " INSERT INTO filiere ( nom, description )  VALUES ( '$nom', '$description' ) "; 
- $result = $bdd->query($query); 
+include '../../config.php';
+$nom = $_POST['nom'];
+$description = $_POST['description'];
 
- if( $result )
- {
-	 echo 'Success';
-	 header('location:form.php');
- }
- else
- {
- 	echo 'Query Failed';
- }
+//INSERT 
+$query = " INSERT INTO filiere ( nom, description )  VALUES ( '$nom', '$description' ) ";
+$result = $bdd->query($query);
 
-?>
+if ($result) {
+	echo "<script>window.location.href='../administration.php?display=Filiere'</script>";
+} else {
+	echo 'Query Failed';
+}

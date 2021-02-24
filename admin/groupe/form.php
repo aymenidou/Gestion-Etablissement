@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="../form_styles.css">
+<!-- <link rel="stylesheet" href="../form_styles.css"> -->
 <?php
-include '../connexion.php';
+// include '../connexion.php';
 
 $sql_f = "select * from filiere";
 $stmt = $bdd->query($sql_f);
@@ -10,73 +10,51 @@ $stmt = $bdd->query($sql_s);
 $rows_s = $stmt->fetchAll();
 
 ?>
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
 
-<h2>Groupe</h2>
-<form id="form1" name="form1" method="post" action="query.php">
-    <label for="nom">Nom</label><input type="text" name="nom" id="nom" />
-    <br class="clear" />
-    <label for="filiere">Filiere</label><select name="filiere" id="filiere">
-        <?php
-        if ($rows_f) {
-            // var_dump($rows);
-            for ($i = 0; $i < count($rows_f); $i++) {
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ajouter un Groupe</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+
+            <form id="form1" name="form1" method="post" action="groupe/query.php">
+                <input type="text" name="nom" id="nom" class="form-control form-control-user mb-2" placeholder="Nom" />
+                <div class="form-group row m-1">
+                    <label class="col-sm-4 mb-3 mb-sm-0" for="filiere">Filiere</label>
+                    <select name="filiere" id="filiere" class="form-control form-control-user col-sm-5 mb-3 mb-sm-0">
+                        <?php
+                        foreach ($rows_f as $row) {
+                            echo '<option value=' . $row['id'] . '>' . $row['nom'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
                 
-                echo '<option value='.$rows_f[$i][0].'>' . $rows_f[$i][1] . "</option>";
-            }
-        }
+                <div class="form-group row m-1">
+                    <label class="col-sm-4 mb-3 mb-sm-0" for="salle">Salle</label>
+                    <select name="salle" id="salle" class="form-control form-control-user col-sm-5 mb-3 mb-sm-0">
+                        <?php
+                        foreach ($rows_s as $row) {
+                            echo '<option value=' . $row['id'] . '>' . $row['nom'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+        </div>
 
-        ?>
-    </select>
-    <br class="clear" />
-    <label for="salle">Salle</label><select name="salle" id="salle">
-    <?php
-        if ($rows_s) {
-            // var_dump($rows);
-            for ($i = 0; $i < count($rows_s); $i++) {
-                
-                echo "<option value=".$rows_s[$i][0].">" . $rows_s[$i][1] . "</option>";
-            }
-        }
 
-        ?>
-    </select>
-    <br class="clear" />
-    <input type="submit" name="ajouter" id="ajouter" value="Ajouter" />
-    <input type="reset" name="annuler" id="annuler" value="Annuler" />
-    <br class="clear" />
-</form>
-<?php
+        <div class="modal-footer">
+            <div class="btn-block align-content-center ">
+                <button type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn  btn-primary col-sm-6 mb-3 mb-sm-0">Ajouter</button>
+                <button type="reset" name="annuler" id="annuler" value="Annuler" class="btn  btn-secondary col-sm-5 mb-3  mb-sm-0">Annuler</button>
+            </div>
+        </div>
+        </form>
 
-$sql = "select g.id as id,g.nom as nom,g.filiere as idf,f.nom as nomf,g.salle as ids,s.nom as noms from groupe as g inner join filiere as f inner join salle as s where g.filiere = f.id and g.salle = s.id";
-$stmt = $bdd->query($sql);
-$rows = $stmt->fetchAll();
-var_dump($rows);
-?>
-<div>
-    <h2>liste des groupe</h2>
-    <table border>
-        <tr>
-            <th>id</th>
-            <th>nom</th>
-            <th>id Filiere</th>
-            <th>Filiere</th>
-            <th>id Salle</th>
-            <th>Salle</th>
-        </tr>
-        <?php
-        if ($rows) {
-            // var_dump($rows);
-            for ($i = 0; $i < count($rows); $i++) {
-                echo "<tr>";
-                echo "<td>" . $rows[$i]["id"] . "</td>";
-                echo "<td>" . $rows[$i]["nom"] . "</td>";
-                echo "<td>" . $rows[$i]["idf"] . "</td>";
-                echo "<td>" . $rows[$i]["nomf"] . "</td>";
-                echo "<td>" . $rows[$i]["ids"] . "</td>";
-                echo "<td>" . $rows[$i]["noms"] . "</td>";
-                echo "</tr>";
-            }
-        }
-        ?>
-    </table>
+    </div>
 </div>

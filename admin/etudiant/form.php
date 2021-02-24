@@ -2,20 +2,17 @@
 <?php
 
 $sqlg = "select * from groupe";
-$sqlf = "select * from filiere";
 $sqln = "select * from niveau";
 //get groupes
 $stmt = $bdd->prepare($sqlg);
 $stmt->execute();
 $rowsg = $stmt->fetchAll();
-//get filiere
-// $stmt = $bdd->prepare($sqlf);
-// $stmt->execute();
-// $rowsf = $stmt->fetchAll();
 //get niveau
 $stmt = $bdd->prepare($sqln);
 $stmt->execute();
 $rowsn = $stmt->fetchAll();
+
+
 ?>
 
 <div class="modal-dialog" role="document">
@@ -29,7 +26,8 @@ $rowsn = $stmt->fetchAll();
         </div>
         <div class="modal-body">
             <form id="form1" name="form1" method="post" action="etudiant/query.php" class="align-text-center card p-4">
-                <input type="text" name="cne" id="cne" class="form-control form-control-user mb-2" placeholder="CNE" />
+                <input type="text" name="cne" id="cne" class="form-control form-control-user mb-2" placeholder="CNE" 
+                 />
                 <input type="text" name="nom" id="nom" class="form-control form-control-user mb-2" placeholder="Nom" />
                 <input type="text" name="prenom" id="prenom" class="mb-2 form-control form-control-user" placeholder="Prenom" />
 

@@ -40,21 +40,4 @@ if($result){
 }
 
 
-//  echo $query;
-//  echo $username;
-//  if( $result )
-//  {
-//  	echo 'Success';
-//  }
-//  else
-//  {
-//  	echo 'Query Failed';
-//  }
-//  if( $result2 )
-//  {
-//  	echo 'Success';
-//  }
-//  else
-//  {
-//  	echo 'Query Failed';
-//  }
+
