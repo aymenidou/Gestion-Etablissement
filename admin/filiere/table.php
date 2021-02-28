@@ -8,7 +8,7 @@
 <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <?php
-$sql = "SELECT * from filiere";
+$sql = "SELECT f.id id,f.nom nom,f.description description,n.nom niveau from filiere f inner join niveau n where f.niveau = n.id";
 
 $stmt = $bdd->prepare($sql);
 $stmt->execute();
@@ -43,6 +43,7 @@ $rows = $stmt->fetchAll();
                 <tr>
                     <th>ID</th>
                     <th>Nom</th>
+                    <th>Niveau</th>
                     <th>Description</th>
                     <th></th>
                     <th></th>
@@ -52,6 +53,7 @@ $rows = $stmt->fetchAll();
                 <tr>
                     <th>ID</th>
                     <th>Nom</th>
+                    <th>Niveau</th>
                     <th>Description</th>
                     <th></th>
                     <th></th>
@@ -65,6 +67,7 @@ $rows = $stmt->fetchAll();
                     "<tr>
                         <th>" . $rows[$i]['id'] . "</th>
                         <th>" . $rows[$i]['nom'] . "</th>
+                        <th>" . $rows[$i]['niveau'] . "</th>
                         <th>" . $rows[$i]['description'] . "</th>
                         <th><a href='?id_f=" . $rows[$i]['id'] . "' data-toggle='modal' data-target='#addFormC'><i class='fa text-success fa-pen' aria-hidden='true'></i></a></th>
                         <th><a href='../delete.php?id_f=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-trash' aria-hidden='true'></i></a></th>

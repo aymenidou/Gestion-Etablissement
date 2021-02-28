@@ -5,12 +5,12 @@
 - Gérer les lycée
 - Gérer les étudiant add del update archive %Scolarite
 - Gérer les professeur %Scolarite
-- Gérer les employer (Directeur / Secraitaire / Menage / ....) %RH
-- Gérer les événement %library
-- Imprimer les resultat %Scolarite
-- Gestion des emploi de temps %Scolarite
-- Gestion des Matiere %Scolarite
-- Gestion d'une library 
+- Gérer les employer (Directeur / Secretaire / Menage / ....) %RH
+- Gérer les événements %library
+- Imprimer les résultats %Scolarite
+- Gestion les emploi de temps %Scolarite
+- Gestion les Matieres %Scolarite
+- Gestion du library 
 
 ----------
 

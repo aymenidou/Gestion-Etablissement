@@ -1,9 +1,5 @@
-<link rel="stylesheet" href="../../form_styles.css">
 <?php
-$formType = "Administrateur";
-// if ($table == 'Professeur') {
 include '../config.php';
-$formType = "Professeur";
 $sql = 'select * from matiere';
 $stmt = $bdd->prepare($sql);
 $stmt->execute();
@@ -24,77 +20,87 @@ if ($avatar == "") {
         $avatar = "https://avataaars.io/?avatarStyle=Circle";
     }
 }
-// }
-
-
 ?>
-<div class="container" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Votre Profile</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
-
-        <div class="modal-body align-text-center card p-4">
-            <form id="form1" name="form1" method="post" action="updateProfile.php" >
-                <div class="form-group mb-2">
-                    
-                        
-                        <img src="<?php echo $avatar; ?>" alt="" id="" class="w-25 border avatar">
-                        <input type="text" name="avatar" id="avatar" class="divavatar col-sm-7 mb-3 mb-sm-0 form-control form-control-user" value="<?php echo $avatar; ?>" hidden />
-                        <button type="button" class="btn btn-primary btn-user random col-sm-2 mb-3 mb-sm-0 form-control form-control-user">Random</button>
+<form id="form1" name="form1" method="post" action="updateProfile.php" >
+<div class="">
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img src="<?php echo $avatar?>" alt="Avatar">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group mb-2 ">
-                    <input type="text" name="cin" id="cin" class="col-sm-5 form-control form-control-user mb-2" value="<?php echo $professeur["cin"];  ?>" hidden />
-                </div>
-                <div class="form-group row mb-2 ">
-                    <label for="nom" class="col-sm-5">Nom : </label>
-                    <input type="text" name="nom" id="nom" class="col-sm-3 mb-3 mb-sm-0 form-control form-control-user " placeholder="Nom" value="<?php echo $professeur["nom"]; ?>" />
-                </div>
-                <div class="form-group row mb-2 ">
-
-                    <label for="nom" class="col-sm-5">Prenom : </label>
-                    <input type="text" name="prenom" id="prenom" class="col-sm-3 mb-3 mb-sm-0  form-control form-control-user" placeholder="Prenom" value="<?php echo $professeur["prenom"]; ?>" />
-                </div>
-                <div class="form-group row mb-2">
-                    <label for="date_naissance" class="col-sm-5 mb-3 mb-sm-0">Date naissance</label>
-                    <input type="date" name="date_naissance" id="date_naissance" class="col-sm-5 mb-2 mb-sm-0 form-control form-control-user" value="<?php echo $professeur["date_naissance"]; ?>" />
-                </div>
-                <div class="form-group row mb-2">
-                    <label for="adresse" class="col-sm-5 mb-3 mb-sm-0">Adresse : </label>
-                    <input type="text" name="adresse" id="adresse" class="form-control form-control-user mb-2 col-sm-5 mb-3 mb-sm-0" placeholder="Adresse" value="<?php echo $professeur["adresse"]; ?>" />
-                </div>
-                <div class="form-group row mb-2">
-                    <label for="telephone" class="col-sm-5 mb-3 mb-sm-0">Telephone : </label>
-                    <input type="text" name="telephone" id="telephone" class="form-control form-control-user mb-3 col-sm-5 mb-3 mb-sm-0" placeholder="Telephone" value="<?php echo $professeur["telephone"]; ?>" />
-                </div>
-
-        </div>
-        <div class="modal-footer">
-            <div class="btn-block align-content-center ">
-                <button type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn  btn-primary col-sm-6 mb-3 mb-sm-0">Enregistrer</button>
-                <button type="reset" name="annuler" id="annuler" value="Annuler" class="btn  btn-secondary col-sm-5 mb-3  mb-sm-0">Annuler</button>
             </div>
         </div>
-
-        </form>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <h6 class="mb-2 text-primary">Données Personnels</h6>
+                        </div>
+                        <input type="text" value="<?php echo $avatar?>" hidden name="avatar"/>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="cin">CIN</label>
+                                <input type="text" class="form-control" id="cin" name="cin" value="<?php echo $professeur['cin'];?>" readonly>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="nom">Nom</label>
+                                <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom" value="<?php echo $professeur['nom'];?>">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="prenom">Prenom</label>
+                                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prenom" value="<?php echo $professeur['prenom'];?>">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="telephone">Telephone</label>
+                                <input type="text" class="form-control" id="telephone" name="telephone" placeholder="Votre telephone" value="<?php echo $professeur['telephone'];?>">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="adresse">Adresse</label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Votre Adresse" value="<?php echo $professeur['adresse'];?>">
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="date_naissance">Date naissance</label>
+                                <input type="text" class="form-control" id="date_naissance" name="date_naissance"  value="<?php echo $professeur['date_naissance'];?>">
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+                                <button type="reset" id="reset" name="reset" class="btn btn-secondary">Annuler</button>
+                                <button type="submit" id="submit" name="submit" class="btn btn-primary">Enregistrer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+</form>
 <script src="../vendor/jquery/jquery.min.js"></script>
-<script src="avatar.js"></script>
-<script>
-    const generator = new AvatarGenerator();
-
-    const img = document.querySelector('.avatar');
-    const btn = document.querySelector('.random');
-    const div = document.querySelector('.divavatar');
-    btn.addEventListener('click', function() {
-        var link = generator.generateRandomAvatar();
-        img.src = link;
-        console.log(link);
-        div.value=link;
-        
-    });
-</script>

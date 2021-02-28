@@ -1,28 +1,24 @@
 <?php 
 include '../config.php';
-$cin =$_POST['cin'];
+$cin =$_POST['cne'];
 $nom =$_POST['nom'];
 $prenom =$_POST['prenom'];
 $date_naissance =$_POST['date_naissance'];
 $adresse =$_POST['adresse'];
-$telephone =$_POST['telephone'];
 $avatar =$_POST['avatar'];
 
-$sql = "UPDATE professeur SET nom = ?, prenom = ?, date_naissance = ?, adresse = ?, telephone = ?,avatar = ? where cin = ?";
+$sql = "UPDATE etudiants SET nom = ?, prenom = ?, date_naissance = ?, adresse = ?,avatar = ? where cne = ?";
 
 $stmt = $bdd->prepare($sql);
 $stmt->bindValue(1,$nom);
 $stmt->bindValue(2,$prenom);
 $stmt->bindValue(3,$date_naissance);
 $stmt->bindValue(4,$adresse);
-$stmt->bindValue(5,$telephone);
-$stmt->bindValue(6,$avatar);
-$stmt->bindValue(7,$cin);
+$stmt->bindValue(5,$avatar);
+$stmt->bindValue(6,$cin);
 $result=$stmt->execute();
 if($result){
     echo "<script>
-              window.location.href = '?display=parametres'
-            </script>";
-    
+    window.location.href='dashboard.php'</script>";
 }
 ?>

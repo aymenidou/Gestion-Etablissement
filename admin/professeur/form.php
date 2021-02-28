@@ -20,8 +20,8 @@ if ($table == 'Professeur') {
             </button>
         </div>
 
-        <div class="modal-body">
-            <form id="form1" name="form1" method="post" action="professeur/query.php" class="align-text-center card p-4">
+        <form name="form1" method="post" action="professeur/query.php" class="align-text-center card p-4">
+            <div class="modal-body">
                 <input type="text" name="cin" id="cin" class="form-control form-control-user mb-2" placeholder="CIN" />
                 <input type="text" name="nom" id="nom" class="form-control form-control-user mb-2" placeholder="Nom" />
                 <input type="text" name="prenom" id="prenom" class="mb-2 form-control form-control-user" placeholder="Prenom" />
@@ -33,7 +33,7 @@ if ($table == 'Professeur') {
                 </div>
                 <div class="form-group row mb-2">
                     <label for="date_naissance" class="col-sm-5 mb-3 mb-sm-0">Date naissance</label>
-                    <input type="date" name="date_naissance" id="date_naissance" class="col-sm-6 mb-3 mb-sm-0 form-control form-control-user"  />
+                    <input type="date" name="date_naissance" id="date_naissance" class="col-sm-6 mb-3 mb-sm-0 form-control form-control-user" />
                 </div>
 
                 <input type="text" name="adresse" id="adresse" class="form-control form-control-user mb-2" placeholder="Adresse" />
@@ -66,14 +66,14 @@ if ($table == 'Professeur') {
                 }
                 ?>
 
-        </div>
-        <div class="modal-footer">
-
-            <div class="btn-block align-content-center ">
-                <button type="submit" name="ajouter" id="ajouter" value="Ajouter" class="btn  btn-primary col-sm-6 mb-3 mb-sm-0">Ajouter</button>
-                <button type="reset" name="annuler" id="annuler" value="Annuler" class="btn  btn-secondary col-sm-5 mb-3  mb-sm-0">Annuler</button>
             </div>
-        </div>
+            <div class="modal-footer">
+
+                <div class="btn-block align-content-center ">
+                    <button type="submit" name="ajouter" value="Ajouter" class="btn  btn-primary col-sm-6 mb-3 mb-sm-0">Ajouter</button>
+                    <button type="reset" name="annuler" value="Annuler" class="btn  btn-secondary col-sm-5 mb-3  mb-sm-0">Annuler</button>
+                </div>
+            </div>
 
         </form>
     </div>

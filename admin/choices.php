@@ -72,7 +72,7 @@ if (isset($_SESSION['cne'])) {
           </button> -->
 
           <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+          <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
               <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
@@ -81,79 +81,18 @@ if (isset($_SESSION['cne'])) {
                 </button>
               </div>
             </div>
-          </form>
+          </form> -->
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
             <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
+            
               <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
+              
 
             <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
+            
 
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
@@ -247,7 +186,7 @@ if (isset($_SESSION['cne'])) {
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container ">
 
           <!-- Choose Text -->
           <div class="text-center">
@@ -256,11 +195,11 @@ if (isset($_SESSION['cne'])) {
             </div>
           </div>
 
-          <div style="height: 400px;" class="row justify-content-center text-center">
+          <div style="height: 500px; " class=" d-flex justify-content-center text-center">
 
             <!-- First Box -->
 
-            <div class="col-xl-3 col-md-4 m-4 card shadow border-bottom-success" style="height: 160px;">
+            <div class="col-xl-3 col-md-3 m-2 card shadow border-bottom-success" style="height: 160px;">
               <div class="nav-link collapsed RH" onclick="displayDiv('RH')">
                 <div class="card-body py-3 ">
                   <h1 class="m-auto text-success"><i class="fas fa-users "></i></h1>
@@ -271,8 +210,8 @@ if (isset($_SESSION['cne'])) {
               <div id="collapseRH" class="collapse card shadow">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <div class="collapse-item ">
-                    <a class="nav-link" href="administration.php?display=Administration">
-                      <div class="h4 m-auto text-success row d-inline-flex">
+                    <a class="nav-link m-auto " href="administration.php?display=Administration">
+                      <div class="h5  text-success d-inline-flex">
                         <div><i class="fas fa-user-tie "></i></div>
                         <div class="text-gray-800 ml-4 ">Administrateur</div>
                       </div>
@@ -280,8 +219,8 @@ if (isset($_SESSION['cne'])) {
                   </div>
                   <hr>
                   <div class="collapse-item ">
-                    <a class="nav-link" href="administration.php?display=Professeur">
-                      <div class="h4 m-auto text-success row d-inline-flex">
+                    <a class="nav-link  m-auto" href="administration.php?display=Professeur">
+                      <div class="h5 text-success d-inline-flex">
                         <div><i class="fas fa-chalkboard-teacher "></i></div>
                         <div class="text-gray-800 ml-4 ">Professeur</div>
                       </div>
@@ -295,7 +234,7 @@ if (isset($_SESSION['cne'])) {
 
 
             <!-- Second Box -->
-            <div class="col-xl-3 col-md-4 m-4 card shadow border-bottom-warning" style="height: 160px;">
+            <div class="col-xl-3 col-md-3 m-2 card shadow border-bottom-warning" style="height: 160px;">
               <div class="nav-link collapsed Scolarite" onclick="displayDiv('Scolarite')">
                 <div class="card-body py-3 ">
                   <h1 class="m-auto text-warning"><i class=" fas fa-graduation-cap w-100"></i></h1>
@@ -307,28 +246,28 @@ if (isset($_SESSION['cne'])) {
               <div id="collapseScolarite" class="collapse card shadow">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <div class="collapse-item ">
-                    <a class="nav-link" href="administration.php?display=Classes">
-                      <div class="h4 m-auto text-warning row d-inline-flex">
+                    <a class="nav-link  m-auto" href="administration.php?display=Classes">
+                      <div class="h5  text-warning d-inline-flex">
                         <div><i class="fas fa-user-graduate "></i></div>
-                        <div class="text-gray-800 ml-4 ">Gestion des Classes</div>
+                        <div class="text-gray-800 ml-4 ">Classes</div>
                       </div>
                     </a>
                   </div>
                   <hr>
                   <div class="collapse-item ">
-                    <a class="nav-link" href="administration.php?display=Etudiants">
-                      <div class="h4 m-auto text-warning row d-inline-flex">
+                    <a class="nav-link m-auto" href="administration.php?display=Etudiants">
+                      <div class="h5  text-warning d-inline-flex">
                         <div><i class="fas fa-users-cog "></i></div>
-                        <div class="text-gray-800 ml-4 ">Gestion des Etudiants</div>
+                        <div class="text-gray-800 ml-4 ">Etudiants</div>
                       </div>
                     </a>
                   </div>
                   <hr>
                   <div class="collapse-item ">
-                    <a class="nav-link" href="administration.php?display=Filiere">
-                      <div class="h4 m-auto text-warning row d-inline-flex">
+                    <a class="nav-link m-auto" href="administration.php?display=Seances">
+                      <div class="h5  text-warning d-inline-flex">
                         <div><i class="fas fa-atom "></i></div>
-                        <div class="text-gray-800 ml-4 ">Gestion des filières</div>
+                        <div class="text-gray-800 ml-4 ">Séances</div>
                       </div>
                     </a>
                   </div>
@@ -337,7 +276,40 @@ if (isset($_SESSION['cne'])) {
               </div>
             </div>
             <!-- Third Box -->
-            <div class="col-xl-3 col-md-4 m-4 card shadow  border-bottom-danger" style="height: 160px;">
+            <div class="col-xl-3 col-md-3 m-2 card shadow  border-bottom-primary" style="height: 160px;">
+              <div class="nav-link collapsed Programme" href="#" onclick="displayDiv('Programme')" >
+                <div class="card-body py-3 ">
+                  <h1 class="m-auto text-primary"><i class=" fas fa-atom w-100"></i></h1>
+
+                </div>
+                <div class="card-body font-weight-bold text-gray-800 text-lg">
+                  Programme</div>
+              </div>
+              <div id="collapseProgramme" class="collapse card shadow">
+                <div class="bg-white py-2 collapse-inner rounded">
+                  <div class="collapse-item ">
+                    <a class="nav-link m-auto" href="administration.php?display=Filiere">
+                      <div class="h5  text-primary d-inline-flex">
+                        <div><i class="fas fa-atom "></i></div>
+                        <div class="text-gray-800 ml-4 ">Filières</div>
+                      </div>
+                    </a>
+                  </div>
+                  <hr>
+                  <div class="collapse-item ">
+                    <a class="nav-link m-auto" href="administration.php?display=Matiere">
+                      <div class="h5   text-primary d-inline-flex">
+                        <div><i class="fas fa-atom "></i></div>
+                        <div class="text-gray-800 ml-4 ">Matieres</div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- Forth Box -->
+            <div class="col-xl-3 col-md-3 m-2 card shadow  border-bottom-danger" style="height: 160px;">
               <div class="nav-link collapsed Biblio" href="#" onclick="displayDiv('Biblio')" >
                 <div class="card-body py-3 ">
                   <h1 class="m-auto text-danger"><i class=" fas fa-book w-100"></i></h1>
@@ -349,10 +321,10 @@ if (isset($_SESSION['cne'])) {
               <div id="collapseBiblio" class="collapse card shadow">
                 <div class="bg-white py-2 collapse-inner rounded">
                   <div class="collapse-item ">
-                    <a class="nav-link" href="administration.php?display=Bibliothéque">
-                      <div class="h4 m-auto text-danger row d-inline-flex">
+                    <a class="nav-link m-auto" href="administration.php?display=Bibliothéque">
+                      <div class="h5  text-danger d-inline-flex">
                         <div><i class="fas fa-book-open "></i></div>
-                        <div class="text-gray-800 ml-4 ">Gestion du bibliothéque</div>
+                        <div class="text-gray-800 ml-4 ">Galerie</div>
 
                       </div>
                     </a>
@@ -404,11 +376,13 @@ if (isset($_SESSION['cne'])) {
     const divRH = document.getElementById("collapseRH");
     const divScolarite = document.getElementById("collapseScolarite");
     const divBiblio = document.getElementById("collapseBiblio");
+    const divProgramme = document.getElementById("collapseProgramme");
 
     function displayDiv(d) {
       divRH.style.display ="none";
       divScolarite.style.display ="none";
       divBiblio.style.display ="none";
+      divProgramme.style.display ="none";
       switch (d) {
         case "RH":
           divRH.style.display ="block";
@@ -418,6 +392,9 @@ if (isset($_SESSION['cne'])) {
           break;
         case "Biblio":
           divBiblio.style.display ="block";
+          break;
+        case "Programme":
+          divProgramme.style.display ="block";
           break;
       }
 

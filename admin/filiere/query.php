@@ -2,9 +2,10 @@
 include '../../config.php';
 $nom = $_POST['nom'];
 $description = $_POST['description'];
+$niveau = $_POST['niveau'];
 
 //INSERT 
-$query = " INSERT INTO filiere ( nom, description )  VALUES ( '$nom', '$description' ) ";
+$query = " INSERT INTO filiere ( nom, description,niveau )  VALUES ( '$nom', '$description','$niveau' ) ";
 $result = $bdd->query($query);
 
 if ($result) {

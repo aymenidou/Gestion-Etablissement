@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="../form_styles.css">
 <h2>Salle</h2>
-<form id="form1" name="form1" method="post" action="query.php">
+<form  name="form1" method="post" action="query.php">
     <label for="nom">Nom</label><input type="text" name="nom" id="nom" />
     <br class="clear" />
     <label for="description">Description</label><input type="text" name="description" id="description" />
     <br class="clear" />
-    <input type="submit" name="ajouter" id="ajouter" value="Ajouter" />
-    <input type="reset" name="annuler" id="annuler" value="Annuler" />
+    <input type="submit" name="ajouter"  value="Ajouter" />
+    <input type="reset" name="annuler"  value="Annuler" />
     <br class="clear" />
 </form>
 <?php

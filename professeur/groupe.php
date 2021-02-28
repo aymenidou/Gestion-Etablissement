@@ -8,36 +8,26 @@
 <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <?php
-$sql = "SELECT
-    g.id,
-    g.nom groupe,
-    f.nom filiere,
-    s.nom salle
-    
+$sql = 'SELECT
+g.id,
+g.nom groupe,
+f.nom filiere,
+s.nom salle
 FROM
-    groupe AS g
-INNER JOIN filiere AS f
-INNER JOIN salle as s
-WHERE
-    f.id = g.filiere and g.salle = s.id";
+prof_groupe AS pg
+INNER JOIN groupe AS g
+INNER JOIN professeur AS p
+INNER JOIN filiere f INNER JOIN salle s WHERE
+p.cin = "'.$_SESSION["cne"].'" AND p.id = pg.professeur AND p.matiere = pg.matiere AND g.id = pg.groupe AND f.id = g.filiere AND s.id = g.salle';
 $stmt = $bdd->prepare($sql);
 $stmt->execute();
 $rows = $stmt->fetchAll();
-
+echo $sql;
 
 ?>
 <div class="card-header py-3 justify-content-end d-flex align-items-end ">
 
-    <a href="#" data-toggle="modal" data-target="#addForm">
-        <button class="btn btn-primary btn-icon-split align-self-end ">
-            <span class="icon "><i class="fa fa-plus" aria-hidden="true"></i></span>
-            <span class="text">Ajouter</span>
-        </button>
-    </a>
-    <button class="btn btn-danger btn-icon-split align-self-end">
-        <span class="icon "><i class="fa fa-print" aria-hidden="true"></i></span>
-        <span class="text">Imprimer</span>
-    </button>
+    
 </div>
 <div class="card-body">
     <div class="table-responsive">
@@ -73,8 +63,8 @@ $rows = $stmt->fetchAll();
                         <th>  " . $rows[$i]['groupe'] . " </a></th>
                         <th>" . $rows[$i]['filiere'] . "</th>
                         <th>" . $rows[$i]['salle'] . "</th>
-                        <th class='text-center'><a href='administration.php?display=Etudiants&groupe=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-pen' aria-hidden='true'></i></a></th>
-                        <th class='text-center'><a href='administration.php?display=Seances&groupe=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-pen' aria-hidden='true'></i></a></th>
+                        <th class='text-center'><a href='dashboard.php?display=Etudiants&groupe=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-pen' aria-hidden='true'></i></a></th>
+                        <th class='text-center'><a href='dashboard.php?display=Seances&groupe=" . $rows[$i]['id'] . "'><i class='fa text-danger fa-pen' aria-hidden='true'></i></a></th>
                     </tr>";
                 }
                 ?>

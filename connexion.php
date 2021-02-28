@@ -17,19 +17,22 @@ if ($username && $password) {
         session_start();
 
         $_SESSION['cne'] = $row['cne'];
+        
         $_SESSION['username'] = $row['username'];
         
         switch ($row["type"]) {
             case "admin":
+                $_SESSION['cin'] = $row['cin'];
                 echo "<script>window.location.href='admin/choices.php'</script>";
                 break;
             case "professeur":
+                $_SESSION['cin'] = $row['cin'];
                 $_SESSION['type'] = "professeur";
-                echo "<script>window.location.href='professeur/dashboard.php?display=email'</script>";
+                echo "<script>window.location.href='professeur/dashboard.php?display=parametres'</script>";
                 break;
             case "etudiant":
                 $_SESSION['type'] = "etudiant";
-                echo "<script>window.location.href='etudiant/dashboard.php'</script>";
+                echo "<script>window.location.href='etudiant/dashboard.php?display=parametres'</script>";
                 break;
             default:
                 header('location:dashboard.php', false);

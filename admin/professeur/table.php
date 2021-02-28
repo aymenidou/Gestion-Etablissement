@@ -87,9 +87,16 @@ $rows = $stmt->fetchAll();
                     "<tr>
                         <th>" . $rows[$i]['cin'] . "</th>
                         <th>" . $rows[$i]['nom'] . "</th>
-                        <th>" . $rows[$i]['prenom'] . "</th>
-                        <th>" . $rows[$i]['genre'] . "</th>
-                        <th>" . $rows[$i]['date_naissance'] . "</th>
+                        <th>" . $rows[$i]['prenom'] . "</th>";
+                        if($rows[$i]['genre']=="m"){
+
+                           echo "<th>masculin</th>";
+                        }
+                        if($rows[$i]['genre']=="f"){
+
+                           echo "<th>féminin</th>";
+                        }
+                       echo "<th>" . $rows[$i]['date_naissance'] . "</th>
                         <th class='ellipsis'>" . $rows[$i]['adresse'] . "</th>
                         <th>" . $rows[$i]['contrat'] . "</th>
                         <th>" . $rows[$i]['salaire'] . "</th>";
