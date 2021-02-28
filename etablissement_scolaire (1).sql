@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 24, 2021 at 11:45 AM
+-- Generation Time: Feb 28, 2021 at 10:25 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `authentification` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `cne` (`cne`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `authentification`
@@ -147,13 +147,11 @@ CREATE TABLE IF NOT EXISTS `authentification` (
 
 INSERT INTO `authentification` (`id`, `username`, `password`, `type`, `cne`) VALUES
 (1, 'admin@school.ma', 'admin', 'admin', 'BH609975'),
-(2, 'B12345@school.ma', 'B12345', 'professeur', 'B12345'),
 (3, 'B101010@school.ma', 'B101010', 'admin', 'B101010'),
 (4, 'CH505050@school.ma', 'CH505050', 'admin', 'CH505050'),
 (6, 'BL990990@school.ma', 'BL990990', 'professeur', 'BL990990'),
 (7, 'LH102010@school.ma', 'LH102010', 'professeur', 'LH102010'),
 (8, 'LH202020@school.ma', 'LH202020', 'professeur', 'LH202020'),
-(9, 'R120120120@school.ma', 'R120120120', 'etudiant', 'R120120120'),
 (10, 'LK164975@school.ma', 'LK164975', 'professeur', 'LK164975'),
 (11, 'B1111@school.ma', 'B1111', 'professeur', 'B1111'),
 (12, 'B2222@school.ma', 'B2222', 'professeur', 'B2222'),
@@ -165,7 +163,8 @@ INSERT INTO `authentification` (`id`, `username`, `password`, `type`, `cne`) VAL
 (19, 'B8888@school.ma', 'B8888', 'professeur', 'B8888'),
 (20, 'B9999@school.ma', 'B9999', 'professeur', 'B9999'),
 (21, 'B0000@school.ma', 'B0000', 'professeur', 'B0000'),
-(22, 'L1212@school.ma', 'L1212', 'professeur', 'L1212');
+(22, 'L1212@school.ma', 'L1212', 'professeur', 'L1212'),
+(23, 'R1111@school.ma', 'R1111', 'etudiant', 'R1111');
 
 -- --------------------------------------------------------
 
@@ -180,9 +179,16 @@ CREATE TABLE IF NOT EXISTS `coeficient` (
   `matiere` int(11) NOT NULL,
   `coef` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `filiere` (`filiere`),
+  UNIQUE KEY `filiere` (`filiere`,`matiere`),
   KEY `matiere` (`matiere`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `coeficient`
+--
+
+INSERT INTO `coeficient` (`id`, `filiere`, `matiere`, `coef`) VALUES
+(1, 1, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -203,14 +209,16 @@ CREATE TABLE IF NOT EXISTS `email` (
   PRIMARY KEY (`id`),
   KEY `emetteur` (`emetteur`),
   KEY `recepteur` (`recepteur`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `email`
 --
 
 INSERT INTO `email` (`id`, `emetteur`, `recepteur`, `date_envoi`, `heure_envoi`, `sujet`, `message`, `priorite`) VALUES
-(11, 'B12345@school.ma', 'admin@school.ma', '2021-02-23', '15:00:54', 'suuujeeett', '', 2);
+(12, 'B1111@school.ma', 'B2222@school.ma', '2021-02-24', '21:52:15', 'suuujeeett', 'messshgd', 2),
+(13, 'B1111@school.ma', 'B2222@school.ma', '2021-02-24', '21:52:43', 'suuujeeett', 'messshgd', 1),
+(14, 'B1111@school.ma', 'R1111@school.ma', '2021-02-27', '20:20:54', 'message pour etudiant', '', 2);
 
 -- --------------------------------------------------------
 
@@ -228,20 +236,31 @@ CREATE TABLE IF NOT EXISTS `etudiants` (
   `adresse` varchar(160) NOT NULL,
   `date_inscription` date NOT NULL,
   `cne` varchar(50) NOT NULL,
-  `niveau_scolaire` int(11) NOT NULL,
   `groupe` int(11) NOT NULL,
   `avatar` varchar(400) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `niveau_scolaire` (`niveau_scolaire`),
   KEY `groupe` (`groupe`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `etudiants`
 --
 
-INSERT INTO `etudiants` (`id`, `nom`, `prenom`, `genre`, `date_naissance`, `adresse`, `date_inscription`, `cne`, `niveau_scolaire`, `groupe`, `avatar`) VALUES
-(3, 'a1', 'a1', 'm', '1999-10-10', 'Rabat ', '2021-02-01', 'R1111', 3, 4, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light');
+INSERT INTO `etudiants` (`id`, `nom`, `prenom`, `genre`, `date_naissance`, `adresse`, `date_inscription`, `cne`, `groupe`, `avatar`) VALUES
+(5, 'aymen', 'idou', 'm', '1998-05-25', 'Casa', '1998-09-10', 'R1111', 4, 'https://avataaars.io/?accessoriesType=Wayfarers&avatarStyle=Circle&clotheColor=PastelBlue&clotheType=BlazerShirt&eyeType=EyeRoll&eyebrowType=SadConcernedNatural&facialHairColor=Platinum&facialHairType=BeardMedium&hairColor=Blonde&hatColor=Red&mouthType=Serious&skinColor=Brown&topType=ShortHairShortCurly&graphicType=Cumbia');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam`
+--
+
+DROP TABLE IF EXISTS `exam`;
+CREATE TABLE IF NOT EXISTS `exam` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `exam` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -254,23 +273,23 @@ CREATE TABLE IF NOT EXISTS `filiere` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
   `description` varchar(150) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+  `niveau` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `niveau` (`niveau`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `filiere`
 --
 
-INSERT INTO `filiere` (`id`, `nom`, `description`) VALUES
-(1, 'SMA', 'Science Math A'),
-(2, 'SMB', 'Science Math B'),
-(3, 'SVT', 'Science de vie et terre'),
-(4, 'PC', 'Science de Physique et Chimie'),
-(5, 'SM', 'Science Math'),
-(6, 'SX', 'Science Experimentale'),
-(7, 'TC', 'Tronc Commun'),
-(8, 'test', 't'),
-(9, 't', 't');
+INSERT INTO `filiere` (`id`, `nom`, `description`, `niveau`) VALUES
+(1, 'SMA', 'Science Math A', 3),
+(2, 'SMB', 'Science Math B', 3),
+(3, 'SVT', 'Science de vie et terre', 3),
+(4, 'PC', 'Science de Physique et Chimie', 3),
+(5, 'SM', 'Science Math', 2),
+(6, 'SX', 'Science Experimentale', 2),
+(7, 'TC', 'Tronc Commun', 1);
 
 -- --------------------------------------------------------
 
@@ -285,6 +304,7 @@ CREATE TABLE IF NOT EXISTS `groupe` (
   `filiere` int(11) NOT NULL,
   `salle` int(11) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `salle` (`salle`),
   KEY `id_filiere` (`filiere`),
   KEY `id_salle` (`salle`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
@@ -328,8 +348,7 @@ INSERT INTO `matiere` (`id`, `nom`, `description`) VALUES
 (7, 'FR', ''),
 (8, 'AR', ''),
 (9, 'HG', ''),
-(10, 'Sport', ''),
-(11, 'm', 'm');
+(10, 'Sport', '');
 
 -- --------------------------------------------------------
 
@@ -487,6 +506,23 @@ INSERT INTO `nom` (`id`, `nom`) VALUES
 (113, 'Barakat'),
 (114, 'Bouasria'),
 (115, 'Boukous');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `note`
+--
+
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE IF NOT EXISTS `note` (
+  `id` int(11) NOT NULL,
+  `exam` int(11) NOT NULL,
+  `professeur` int(11) NOT NULL,
+  `etudiant` int(11) NOT NULL,
+  `note` int(11) NOT NULL,
+  KEY `etudiant` (`etudiant`),
+  KEY `professeur` (`professeur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -688,7 +724,7 @@ CREATE TABLE IF NOT EXISTS `professeur` (
 --
 
 INSERT INTO `professeur` (`id`, `cin`, `nom`, `prenom`, `genre`, `date_naissance`, `adresse`, `contrat`, `salaire`, `date_embauche`, `telephone`, `matiere`, `avatar`) VALUES
-(6, 'B1111', 'Mohammed', 'med', 'm', '1960-01-01', 'Casa', 'CDI', '5000', '2021-02-23', '0606060606', 1, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'),
+(6, 'B1111', 'Mohammed', 'med', 'm', '1960-01-01', 'Casa', 'CDI', '5000', '2021-02-23', '0644556600', 1, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'),
 (7, 'B2222', 'Fahd', 'Chouban', 'm', '1950-01-01', 'Rabat ', 'CDI', '7000', '2021-02-22', '0123456789', 2, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'),
 (8, 'B3333', 'Brahim', 'Elmaleh', 'm', '1960-01-01', 'Casa', 'CDI', '6000', '2021-02-23', '0321654987', 3, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'),
 (9, 'B4444', 'Moustafa', 'Menebhi', 'm', '1980-01-01', 'Rabat ', 'CDI', '8000', '2021-02-23', '02581474736', 4, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'),
@@ -699,6 +735,40 @@ INSERT INTO `professeur` (`id`, `cin`, `nom`, `prenom`, `genre`, `date_naissance
 (14, 'B9999', 'Imane', 'Benchemsi', 'f', '1990-10-10', 'Casa', 'CDI', '5000', '2021-02-23', '0326598741', 9, 'https://avataaars.io/?avatarStyle=Circle'),
 (15, 'B0000', 'Tarik', 'El Hajjam', 'm', '1970-01-01', 'Rabat ', 'CDI', '6500', '2021-02-23', '03265987411', 10, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light'),
 (16, 'L1212', 'test', 'test', 'm', '2021-02-24', 'Sidi Moumen CASA', 'CDI', '6000', '2021-02-24', '010101', 5, 'https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortFlat&accessoriesType=Blank&hairColor=Black&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prof_groupe`
+--
+
+DROP TABLE IF EXISTS `prof_groupe`;
+CREATE TABLE IF NOT EXISTS `prof_groupe` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `professeur` int(11) NOT NULL,
+  `matiere` int(11) NOT NULL,
+  `groupe` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `matiere` (`matiere`,`groupe`),
+  KEY `groupe` (`groupe`),
+  KEY `professeur` (`professeur`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prof_groupe`
+--
+
+INSERT INTO `prof_groupe` (`id`, `professeur`, `matiere`, `groupe`) VALUES
+(1, 6, 1, 4),
+(2, 7, 2, 4),
+(3, 8, 3, 4),
+(4, 9, 4, 4),
+(5, 10, 5, 4),
+(6, 11, 6, 4),
+(7, 12, 7, 4),
+(8, 13, 8, 4),
+(9, 14, 9, 4),
+(10, 15, 10, 4);
 
 -- --------------------------------------------------------
 
@@ -749,13 +819,25 @@ INSERT INTO `salle` (`id`, `nom`, `description`) VALUES
 DROP TABLE IF EXISTS `seance`;
 CREATE TABLE IF NOT EXISTS `seance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prof` int(11) NOT NULL,
+  `matiere` int(11) NOT NULL,
   `groupe` int(11) NOT NULL,
   `jour` varchar(100) NOT NULL,
-  `heure_d` time NOT NULL,
-  `heure_f` time NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `heure_d` varchar(50) NOT NULL,
+  `duree` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `groupe` (`groupe`),
+  KEY `matiere` (`matiere`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `seance`
+--
+
+INSERT INTO `seance` (`id`, `matiere`, `groupe`, `jour`, `heure_d`, `duree`) VALUES
+(1, 1, 4, 'Lundi', '08:00', 2),
+(2, 3, 4, 'Lundi', '10:00', 2),
+(3, 7, 4, 'Lundi', '16:00', 1),
+(4, 6, 4, 'Lundi', '17:00', 1);
 
 --
 -- Constraints for dumped tables
@@ -779,8 +861,13 @@ ALTER TABLE `email`
 -- Constraints for table `etudiants`
 --
 ALTER TABLE `etudiants`
-  ADD CONSTRAINT `etudiants_ibfk_1` FOREIGN KEY (`niveau_scolaire`) REFERENCES `niveau` (`id`),
   ADD CONSTRAINT `etudiants_ibfk_2` FOREIGN KEY (`groupe`) REFERENCES `groupe` (`id`);
+
+--
+-- Constraints for table `filiere`
+--
+ALTER TABLE `filiere`
+  ADD CONSTRAINT `filiere_ibfk_1` FOREIGN KEY (`niveau`) REFERENCES `niveau` (`id`);
 
 --
 -- Constraints for table `groupe`
@@ -790,10 +877,32 @@ ALTER TABLE `groupe`
   ADD CONSTRAINT `id_salle` FOREIGN KEY (`salle`) REFERENCES `salle` (`id`);
 
 --
+-- Constraints for table `note`
+--
+ALTER TABLE `note`
+  ADD CONSTRAINT `note_ibfk_1` FOREIGN KEY (`etudiant`) REFERENCES `etudiants` (`id`),
+  ADD CONSTRAINT `note_ibfk_2` FOREIGN KEY (`professeur`) REFERENCES `professeur` (`id`);
+
+--
 -- Constraints for table `professeur`
 --
 ALTER TABLE `professeur`
   ADD CONSTRAINT `professeur_ibfk_1` FOREIGN KEY (`matiere`) REFERENCES `matiere` (`id`);
+
+--
+-- Constraints for table `prof_groupe`
+--
+ALTER TABLE `prof_groupe`
+  ADD CONSTRAINT `prof_groupe_ibfk_1` FOREIGN KEY (`groupe`) REFERENCES `groupe` (`id`),
+  ADD CONSTRAINT `prof_groupe_ibfk_2` FOREIGN KEY (`professeur`) REFERENCES `professeur` (`id`),
+  ADD CONSTRAINT `prof_groupe_ibfk_3` FOREIGN KEY (`matiere`) REFERENCES `matiere` (`id`);
+
+--
+-- Constraints for table `seance`
+--
+ALTER TABLE `seance`
+  ADD CONSTRAINT `seance_ibfk_1` FOREIGN KEY (`groupe`) REFERENCES `groupe` (`id`),
+  ADD CONSTRAINT `seance_ibfk_2` FOREIGN KEY (`matiere`) REFERENCES `matiere` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
