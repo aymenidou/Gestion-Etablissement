@@ -1,17 +1,10 @@
 <?php
 include_once '../config.php';
 
-// $sql = 'select * from groupe';
-// $stmt = $bdd->prepare($sql);
-// $stmt->execute();
-// $groupe = $stmt->fetchAll();
+
 
 ?>
-<style>
-    /* #list-groupe {
-        display: none;
-    } */
-</style>
+
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -23,24 +16,10 @@ include_once '../config.php';
 
         <div class="modal-body">
             <form id="form1" name="form1" method="post" action="sendEmail.php" class="align-text-center card p-4">
-                <!-- <div class="form-group mb-2">
-                    <label for="type">Type</label>
-                    <input type="radio" name="type" value="individu" id="type_0" class="" checked /><i class="ml-1 fa fa-user" aria-hidden="true"></i> Individu
-                    <input type="radio" name="type" value="groupe" id="type_1" class="" /><i class="ml-1 fa fa-users" aria-hidden="true"></i> Groupe
-                </div> -->
+                
                 <input type="text" name="email" id="email" class="form-control form-control-user mb-2 email" placeholder="Email" />
 
-                <?php
-                // echo '<div class="form-group row mb-2 " id="list-groupe" >
-                //             <label for="groupe" class="col-sm-6 mb-3 mb-sm-0">Groupe :</label>
-                //             <select name="groupe" id="groupe" class="form-control form-control-user col-sm-6 mb-3 mb-sm-0" placeholder="groupe">';
-                // for ($i = 0; $i < count($groupe); $i++) {
-
-                //     echo ' <option value=' .  $groupe[$i]['id'] . '>' .  $groupe[$i]['nom'] . '</option>';
-                // }
-                // echo '</select></div>';
-
-                ?>
+                
                 <div class="form-group row mb-2">
 
                     <label for="priorite" class="col-sm-6 mb-3 mb-sm-0">Priorite :</label>
@@ -72,29 +51,3 @@ include_once '../config.php';
     </div>
 </div>
 
-<script>
-    // let groupe = document.getElementById("list-groupe");
-    // let email = document.getElementById("email");
-    // let type = document.getElementsByName("type");
-
-    // function hide() {
-    //     groupe.style.display = 'none';
-    //     email.style.display = 'none';
-    // }
-
-    // var radios = document.forms["form1"].elements["type"];
-    // for (var i = 0, max = radios.length; i < max; i++) {
-    //     radios[i].onclick = function() {
-    //         switch (this.value) {
-    //             case "individu":
-    //                 hide();
-    //                 email.style.display = 'flex';
-    //                 break;
-    //             case "groupe":
-    //                 hide();
-    //                 groupe.style.display = 'flex';
-    //                 break;
-    //         }
-    //     }
-    // }
-</script>

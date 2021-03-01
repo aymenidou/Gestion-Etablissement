@@ -22,17 +22,17 @@ if ($username && $password) {
         
         switch ($row["type"]) {
             case "admin":
-                $_SESSION['cin'] = $row['cin'];
+                
                 echo "<script>window.location.href='admin/choices.php'</script>";
                 break;
             case "professeur":
-                $_SESSION['cin'] = $row['cin'];
+                
                 $_SESSION['type'] = "professeur";
-                echo "<script>window.location.href='professeur/dashboard.php?display=parametres'</script>";
+                echo "<script>window.location.href='professeur/dashboard.php?display=accueil'</script>";
                 break;
             case "etudiant":
                 $_SESSION['type'] = "etudiant";
-                echo "<script>window.location.href='etudiant/dashboard.php?display=parametres'</script>";
+                echo "<script>window.location.href='etudiant/dashboard.php?display=accueil'</script>";
                 break;
             default:
                 header('location:dashboard.php', false);

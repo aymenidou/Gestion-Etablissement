@@ -162,20 +162,21 @@ if (isset($_SESSION['cne'])) {
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <?php echo $nom . " " . $prenom ?>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="?display=accueil">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="?display=parametres">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                  Parametres
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Déconnexion
                 </a>
               </div>
             </li>
@@ -308,31 +309,7 @@ if (isset($_SESSION['cne'])) {
                 </div>
               </div>
             </div>
-            <!-- Forth Box -->
-            <div class="col-xl-3 col-md-3 m-2 card shadow  border-bottom-danger" style="height: 160px;">
-              <div class="nav-link collapsed Biblio" href="#" onclick="displayDiv('Biblio')" >
-                <div class="card-body py-3 ">
-                  <h1 class="m-auto text-danger"><i class=" fas fa-book w-100"></i></h1>
-
-                </div>
-                <div class="card-body font-weight-bold text-gray-800 text-lg">
-                  Bibliothèque</div>
-              </div>
-              <div id="collapseBiblio" class="collapse card shadow">
-                <div class="bg-white py-2 collapse-inner rounded">
-                  <div class="collapse-item ">
-                    <a class="nav-link m-auto" href="administration.php?display=Bibliothéque">
-                      <div class="h5  text-danger d-inline-flex">
-                        <div><i class="fas fa-book-open "></i></div>
-                        <div class="text-gray-800 ml-4 ">Galerie</div>
-
-                      </div>
-                    </a>
-                  </div>
-
-                </div>
-              </div>
-            </div>
+            
           </div>
 
 
@@ -355,19 +332,21 @@ if (isset($_SESSION['cne'])) {
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="ModalLabel">Prêt à partir?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">
+          Selectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à votre session en cours.
+        </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="logout.php">Logout</a>
+          <button class="btn btn-secondary" type="reset" data-dismiss="modal">Annuler</button>
+          <a class="btn btn-primary" href="logout.php">Déconnexion</a>
         </div>
       </div>
     </div>

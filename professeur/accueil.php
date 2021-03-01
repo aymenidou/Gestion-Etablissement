@@ -1,4 +1,5 @@
-<link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 <!-- Custom styles for this template -->
@@ -8,29 +9,23 @@
 <!-- <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
 <?php
-if(isset($_GET['groupe'])){
-    $idgroupe=$_GET['groupe'];
-}else{
-    echo "<script>
-    window.location.href = '?display=Classes'
-  </script>";
-}
 
+// session_start();
+
+$cin = $_SESSION['cne'];
 $sql = "SELECT
-s.jour,
-s.heure_d,
-s.duree,
-m.nom matiere,
-g.salle,
-g.nom groupe,
-f.nom filiere
+    g.id,g.nom groupe,f.nom filiere,s.nom salle, se.heure_d,se.jour,se.duree
 FROM
-seance AS s
+    prof_groupe AS pg
 INNER JOIN groupe AS g
-INNER JOIN matiere AS m
-INNER JOIN filiere AS f
+INNER JOIN professeur AS p
+INNER JOIN filiere f 
+INNER JOIN salle s
+inner join seance se
 WHERE
-s.groupe = g.id AND s.matiere = m.id AND f.id = g.filiere and g.id = ' $idgroupe' order by s.heure_d";
+    p.cin = '$cin' AND p.id = pg.professeur AND p.matiere = pg.matiere and g.id = pg.groupe and f.id = g.filiere and s.id = g.salle and se.groupe = pg.groupe and p.matiere = se.matiere";
+
+
 $stmt = $bdd->prepare($sql);
 $stmt->execute();
 $rows = $stmt->fetchAll();
@@ -58,16 +53,11 @@ $heure = array(
 ?>
 <div class="card-header py-3 justify-content-end d-flex align-items-end ">
 
-    <a href="#" data-toggle="modal" data-target="#addForm">
-        <button class="btn btn-primary btn-icon-split align-self-end ">
-            <span class="icon "><i class="fa fa-plus" aria-hidden="true"></i></span>
-            <span class="text">Ajouter</span>
-        </button>
-    </a>
+    
 </div>
 <div class="card-body">
     <div class="table-responsive">
-        <?php echo 'Filiere : ' . $rows[0]['filiere'] . ' - Salle : ' . $rows[0]['salle']; ?>
+        
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
@@ -109,10 +99,10 @@ $heure = array(
 
                             if ($rows[$k]['jour'] == $jour[$i] && $rows[$k]['heure_d']  == $heure[$j]) {
                                 if ($rows[$k]['duree'] == 2) {
-                                    $seance = $seance . $rows[$k]['matiere'] . '</th><th>';
+                                    $seance = $seance ."G : ". $rows[$k]['groupe'] . "<br>Salle : ". $rows[$k]['salle'] ."<br>F : ". $rows[$k]['filiere'] ."</th><th>";
                                     $j++;
                                 }
-                                $seance = $seance.$rows[$k]['matiere'];
+                                $seance = $seance ."G : ". $rows[$k]['groupe'] . "<br>Salle : ". $rows[$k]['salle'] ."<br>F : ". $rows[$k]['filiere'] ;
                             }
                         }
                         echo "$seance</th>";
@@ -144,3 +134,4 @@ $heure = array(
 
 <!-- Page level custom scripts -->
 <!-- <script src="../../js/demo/datatables-demo.js"></script> -->
+

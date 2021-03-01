@@ -26,10 +26,6 @@ $rows = $stmt->fetchAll();
             <span class="text">Ajouter Matiere</span>
         </button>
     </a>
-    <button class="btn btn-danger btn-icon-split align-self-end">
-        <span class="icon "><i class="fa fa-print" aria-hidden="true"></i></span>
-        <span class="text">Imprimer</span>
-    </button>
 </div>
 <div class="card-body">
     <div class="table-responsive">

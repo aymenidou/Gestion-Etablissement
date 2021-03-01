@@ -8,29 +8,21 @@
 <!-- <link href="../../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
 
 <?php
-if(isset($_GET['groupe'])){
-    $idgroupe=$_GET['groupe'];
-}else{
-    echo "<script>
-    window.location.href = '?display=Classes'
-  </script>";
-}
 
+$cne = $_SESSION['cne'];
 $sql = "SELECT
-s.jour,
-s.heure_d,
-s.duree,
-m.nom matiere,
-g.salle,
+g.id,
 g.nom groupe,
-f.nom filiere
+f.nom filiere,
+s.nom salle,
+se.heure_d,
+se.jour,
+se.duree,
+m.nom matiere
 FROM
-seance AS s
-INNER JOIN groupe AS g
-INNER JOIN matiere AS m
-INNER JOIN filiere AS f
-WHERE
-s.groupe = g.id AND s.matiere = m.id AND f.id = g.filiere and g.id = ' $idgroupe' order by s.heure_d";
+groupe AS g
+INNER JOIN etudiants e INNER JOIN filiere f INNER JOIN salle s INNER JOIN seance se inner join matiere m WHERE
+e.cne = '$cne' AND f.id = g.filiere AND s.id = g.salle AND se.groupe = g.id AND e.groupe = g.id and m.id = se.matiere";
 $stmt = $bdd->prepare($sql);
 $stmt->execute();
 $rows = $stmt->fetchAll();
@@ -58,12 +50,7 @@ $heure = array(
 ?>
 <div class="card-header py-3 justify-content-end d-flex align-items-end ">
 
-    <a href="#" data-toggle="modal" data-target="#addForm">
-        <button class="btn btn-primary btn-icon-split align-self-end ">
-            <span class="icon "><i class="fa fa-plus" aria-hidden="true"></i></span>
-            <span class="text">Ajouter</span>
-        </button>
-    </a>
+    
 </div>
 <div class="card-body">
     <div class="table-responsive">
@@ -137,10 +124,3 @@ $heure = array(
 
 <!-- Custom scripts for all pages-->
 <script src="../../js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<!-- <script src="../../vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
-
-<!-- Page level custom scripts -->
-<!-- <script src="../../js/demo/datatables-demo.js"></script> -->
